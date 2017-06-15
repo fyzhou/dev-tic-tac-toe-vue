@@ -1,19 +1,22 @@
 const state = {
-    loggedin: false
+    loggedin: false,
+    user: { }
 };
 
 const mutations = {
-    'LOGIN' (state) {
+    'LOGIN' (state, user) {
         state.loggedin = true;
+        state.user = user;
     },
     'LOGOUT' (state) {
         state.loggedin = false;
+        state.user = { };
     }
 };
 
 const actions = {
-    logIn: ({commit}) => {
-        commit('LOGIN');
+    logIn: ({commit}, user) => {
+        commit('LOGIN', user);
     },
     logOut: ({commit}) => {
         commit('LOGOUT');
@@ -21,8 +24,11 @@ const actions = {
 };
 
 const getters = {
-    loggedIn: state => {
+    getFirebaseLoginStatus: state => {
         return state.loggedin;
+    },
+    getFirebaseUser: state => {
+        return state.user;
     }
 };
 

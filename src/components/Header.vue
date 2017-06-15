@@ -11,7 +11,7 @@
                         <li
                                 class="dropdown"
                                 :class="{open: isDropdownOpen}"
-                                v-if='isAuthorized'
+                                v-if='isLoggedInWithFirebase'
                                 @click="isDropdownOpen = !isDropdownOpen">
                             <a
                                     href="#"
@@ -28,7 +28,7 @@
                     </ul>
                     <strong class="navbar-text navbar-right"></strong>
                     <button type="submit" class="navbar-btn btn btn-secondary navbar-right" @click="login">
-                        <strong>{{ isAuthorized ? 'Logout' : 'Login' }} {{ isAuthorized }}</strong>
+                        <strong>{{ isLoggedInWithFirebase ? 'Logout' : 'Login' }} {{ isLoggedInWithFirebase }}</strong>
                     </button>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import Firebase from 'firebase';
     export default {
         data() {
           return {
@@ -44,16 +45,17 @@
           }
         },
         computed: {
-            isAuthorized() {
-                return this.$store.getters.loggedIn;
+            isLoggedInWithFirebase() {
+                return this.$store.getters.getFirebaseLoginStatus;
             }
         },
         methods: {
             login() {
-                if(this.isAuthorized) {
-                    this.$store.dispatch('logOut');
+                if(this.isLoggedInWithFirebase) {
+                    Firebase.auth().signOut();
                 } else {
-                    this.$store.dispatch('logIn');
+                    var provider = new Firebase.auth.GoogleAuthProvider();
+                    Firebase.auth().signInWithPopup(provider);
                 }
             }
         }

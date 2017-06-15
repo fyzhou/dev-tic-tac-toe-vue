@@ -6,8 +6,19 @@
                     <h1>Game Lobby</h1>
                     <h6>You can start a game of tic tac toe or watch a game that's in progress.</h6>
 				    <button class="btn btn-primary" @click="start">Start</button>
+                    <div class="container">
+                                <div class="row">
+                <div class="col">
+                    Player 1:
+                </div>
+                <div class="col">
+                    Player 2:
+                </div>
                 </div>
             </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>

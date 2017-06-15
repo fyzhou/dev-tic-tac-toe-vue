@@ -24,9 +24,23 @@
         },
         computed: {
             isAuthorized() {
-                return this.$store.getters.loggedIn;
+                return this.$store.getters.getFirebaseLoginStatus;
             }
         },
+        created() {
+            // Not sure where to put Firebase auth stuff.
+            // TODO: Figure out if I can just use Firebase.auth.onAuthStateChanged and move this to the Header.vue
+            this.$store.getters.getFirebaseAuth.onAuthStateChanged(this.firebaseOnAuthStateChanged.bind(this));
+        },
+        methods: {
+            firebaseOnAuthStateChanged(user) {
+                if (user) { // User is signed in!
+                    this.$store.dispatch('logIn', user);
+                } else { 
+                    this.$store.dispatch('logOut');
+                }
+            }
+        }
     }
 </script>
 
