@@ -23,12 +23,17 @@
                             <ul class="dropdown-menu">
                                 <li><router-link to="/" class="">Home</router-link></li>
                                 <li><router-link to="/lobby" class="">Game Lobby</router-link></li>
+                                <li><router-link to="/tictactoe" class="">Tic Tac Toe</router-link></li>
                             </ul>
                         </li>
                     </ul>
                     <strong class="navbar-text navbar-right"></strong>
                     <button type="submit" class="navbar-btn btn btn-secondary navbar-right" @click="login">
-                        <strong>{{ isLoggedInWithFirebase ? 'Logout' : 'Login' }} {{ isLoggedInWithFirebase }}</strong>
+                        <img 
+                            :src='user.photoURL' 
+                            alt="Your Photo" 
+                            style="width:20px; height:20px; border-radius:20px;">
+                        <strong>{{ isLoggedInWithFirebase ? 'Logout' : 'Login' }}</strong>
                     </button>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -47,6 +52,9 @@
         computed: {
             isLoggedInWithFirebase() {
                 return this.$store.getters.getFirebaseLoginStatus;
+            },
+            user() {
+                return this.$store.getters.getFirebaseUser;
             }
         },
         methods: {
