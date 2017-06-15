@@ -31,6 +31,7 @@
             // Not sure where to put Firebase auth stuff.
             // TODO: Figure out if I can just use Firebase.auth.onAuthStateChanged and move this to the Header.vue
             this.$store.getters.getFirebaseAuth.onAuthStateChanged(this.firebaseOnAuthStateChanged.bind(this));
+            this.$store.dispatch('initializeGameLobby', this.$store.getters.getFirebaseDatabase);
         },
         methods: {
             firebaseOnAuthStateChanged(user) {
