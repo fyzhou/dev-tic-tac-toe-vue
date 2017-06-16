@@ -1,58 +1,59 @@
 <template>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                    <h1>Game Lobby</h1>
-                    <h6>You can start a game of tic tac toe or watch a game that's in progress.</h6>
-                    <button class="btn btn-primary" @click="start">{{ ready ? "Start" : "Waiting on Players" }}</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 text-center">
+                        <h1>Game Lobby</h1>
+                        <h5>You can start a game of tic tac toe or watch a game that's in progress.</h5>
+                        <div class="row">
+                            <!-- Player 1 -->
+                            <div class="col-md-6">
+                                <div 
+                                    class="text-center" 
+                                    v-show="!gameState.player1"
+                                    >
+                                        <label>Player 1: No one yet.</label><br>
+                                        <button class="btn btn-default" @click="registerPlayer1">Join Lobby?</button>
+                                </div>
+                                <div 
+                                    class="text-center" 
+                                    v-show="gameState.player1"
+                                    >
+                                        <label>Player 1: {{ gameState.player1 ? gameState.player1.name : "" }}</label>
+                                        <h4><span class="label label-success" style="font-size: 100%">Ready</span></h4>
+                                </div>
+                            </div>
+                            <!-- Player 2 -->
+                            <div class="col-md-6">
+                                <div 
+                                    class="text-center" 
+                                    v-show="!gameState.player2"
+                                    >
+                                        <label>Player 2: No one yet.</label><br>
+                                        <button class="btn btn-default" @click="registerPlayer2">Join Lobby?</button>
+                                </div>
+                                <div 
+                                    class="text-center" 
+                                    v-show="gameState.player2"
+                                    >
+                                        <label>Player 2: {{ gameState.player2 ? gameState.player2.name : "" }}</label>
+                                        <h4><span class="label label-success" style="font-size: 100%">Ready</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <!-- <h5>Reset if you don't want to wait in the lobby anymore.</h5> -->
+                            <button class="btn btn-warning" @click="reset">Reset Lobby</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>TODO: Add Chatroom</h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-1 text-center" style=""></div>
-
-
-                <div 
-                    class="col-md-4 text-center" 
-                    style="border-style: solid;border-width: 5px;"
-                    v-show="!gameState.player1"
-                    >
-					    <label>Player 1: No one yet.</label>
-                        <button class="btn btn-primary" @click="registerPlayer1">Register?</button>
-                </div>
-                <div 
-                    class="col-md-3 text-center" 
-                    style="border-style: solid;border-width: 5px;"
-                    v-show="gameState.player1"
-                    >Player 1: {{ gameState.player1 ? gameState.player1.name : "" }}</div>
-
-
-                <div class="col-md-2 text-center" style=""></div>
-
-
-                <div 
-                    class="col-md-4 text-center" 
-                    style="border-style: solid;border-width: 5px;"
-                    v-show="!gameState.player2"
-                    >
-					    <label>Player 2: No one yet.</label>
-                        <button class="btn btn-primary" @click="registerPlayer2">Register?</button>
-                </div>
-                <div 
-                    class="col-md-3 text-center" 
-                    style="border-style: solid;border-width: 5px;"
-                    v-show="gameState.player2"
-                    >Player 1: {{ gameState.player2 ? gameState.player2.name : "" }}</div>
-
-
-                <div class="col-md-2 text-center" style=""></div>
-            </div>
-        </div>
-        <button class="btn btn-primary" @click="reset">Reset</button>
     </div>
-    
 </template>
 
 <script>
