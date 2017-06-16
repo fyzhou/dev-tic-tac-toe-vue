@@ -22,8 +22,10 @@
                                     aria-expanded="false">Navi<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><router-link to="/" class="">Home</router-link></li>
-                                <li><router-link to="/lobby" class="">Game Lobby</router-link></li>
-                                <li><router-link to="/tictactoe" class="">Tic Tac Toe</router-link></li>
+                                <li><router-link to="/game" class="">Tic Tac Toe</router-link></li>
+                                <li><router-link to="/test/lobby" class="">Game Lobby (Devo Page)</router-link></li>
+                                <li><router-link to="/test/tictactoe" class="">Tic Tac Toe (Devo Page)</router-link></li>
+                                <li><router-link to="/mock/tictactoe" class="">Tic Tac Toe (Mock Page)</router-link></li>
                             </ul>
                         </li>
                     </ul>
