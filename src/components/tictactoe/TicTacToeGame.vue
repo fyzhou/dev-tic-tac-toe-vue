@@ -7,7 +7,7 @@
                         <div class="jumbotron well">
                             <h2 v-show="!gameover.fin">Player {{ viewstate.currentTurnNumber }}'s turn. Waiting on {{ viewstate.currentTurnPlayerName }}</h2>
                             <h2 v-show="gameover.fin">
-                                Game Over! Winner: {{ gameover.winner }}
+                                Game Over!
                                 <button class="btn btn-primary" v-if="gameover.fin" @click="reset">Restart</button>
                             </h2>
                             
@@ -137,6 +137,18 @@
                         winner = firstItem;
                     }
                 });
+
+                var tie = true;
+                this.grid.forEach(tile => {
+                    if(tile == "") {
+                        tie = false;
+                    }
+                });
+                if(tie) {
+                    gameover = true;
+                    winner = "Tie"
+                }
+
                 return {
                     fin: gameover,
                     winner: winner

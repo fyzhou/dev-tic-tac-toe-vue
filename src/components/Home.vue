@@ -17,6 +17,8 @@
                     <h6>isAnonymous: {{ user.isAnonymous }}</h6>
                     <h6>Photo URL: {{ user.photoURL }}</h6>
                     <img :src='user.photoURL' alt="Your Photo" style="width: 40px;height: 40px;">
+                    <hr>
+                    <router-link to="/game" class="btn btn-primary">Play Tic Tac Toe</router-link>
                 </div>
             </div>
         </div>
