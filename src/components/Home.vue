@@ -20,6 +20,11 @@
                     <hr>
                     <router-link to="/game" class="btn btn-primary">Play Tic Tac Toe</router-link>
                 </div>
+                <!-- Testing Drive V3 API -->
+                <div class="text-center">
+                    <h1>Drive Testing</h1>
+                    
+                </div>
             </div>
         </div>
     </div>

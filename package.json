@@ -5,14 +5,13 @@
   "author": "Franklin Zhou <franklinzhouucsd@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 10.0.0.21 --port 8080",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "firebase": "^4.1.2",
     "vue": "^2.3.3",
     "vue-router": "^2.5.3",
-    "vuefire": "^1.4.3",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
